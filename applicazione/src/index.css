@@ -1,0 +1,265 @@
+@import url('https://fonts.googleapis.com/css2?family=Asap:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Press+Start+2P&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Spectral:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body{
+  font-family: 'Asap', cursive;
+  background-color: rgba(255,174,0,1)
+}
+
+main{
+  /* background-color: white */
+  background-color: rgba(255,174,0,1)
+/* background: rgb(34,193,195);
+background: linear-gradient(0deg, rgba(34,193,195,1) 0%, rgba(253,187,45,1) 27%); */
+}
+
+.icon-style {
+  @apply w-6 sm:h-5 sm:w-5 text-slate-100 cursor-pointer transition-all duration-100 active:scale-110 leading-tight /*h-6*/;
+}
+.icon-style-2{
+  @apply w-6 sm:h-5 sm:w-5 text-slate-900 transition-all duration-100 active:scale-110 leading-tight /*h-6*/;
+}
+
+.logo{
+  background-image: url(./assets/logo_technogym.png);
+  background-size: cover;
+}
+
+.list_item{
+  @apply mx-5 text-slate-100 cursor-pointer
+}
+
+.list_item_div{
+  @apply cursor-pointer flex items-center h-20 hover:bg-gray-800
+}
+
+/* @keyframes changeColor {
+  0% {background: linear-gradient(100deg, rgba(255,227,5,1) 7%, rgba(0,0,0,1) 8%) ; }
+  100% {background: linear-gradient(52deg, rgba(255,227,5,1) 7%, rgba(0,0,0,1) 8%) ; }
+  } */
+/* @keyframes changeColor {
+  0% {background-color:red; left:0px; top:0px;}
+  50% {background-color:green; left:50px; top:50px;}
+  100% {background-color:red; left:100px; top:100px;}
+  } */
+
+.list-item-menu-nb:hover{
+  background: rgb(255,227,5); 
+  background: linear-gradient(52deg, rgba(255,227,5,1) 7%, rgba(0,0,0,1) 8%);
+  padding-left: 4rem;
+  /* animation-name: changeColor;
+  animation-duration: 2s; */
+}
+
+
+.list-item-menu-nb{
+  font-size: 2rem;
+    font-weight: lighter;
+    display: inline;
+    border-bottom: 1px solid;
+    border-left: 1px solid;
+    padding: 4px;
+    color:white;
+    margin-bottom: 1rem;
+    /* animation-name: changeColor;
+  animation-duration: 10s; */
+    /* transition: width 10s ease-out 2s; */
+}
+
+/* ---FOOTER--- */
+.footer-title{
+  @apply text-gray-500 font-bold text-base
+}
+
+.footer-list-items{
+  @apply text-slate-100 cursor-pointer text-2xl font-bold pt-4
+}
+
+/* .google-badge{
+  background-image: url(./assets/google-play-badge.png);
+}
+.apple-badge{
+  background-image: url(./assets/app-store-badge.png);
+} */
+
+.footer-list-item-2{
+  @apply cursor-pointer text-slate-100 font-semibold mr-[30px]
+}
+
+.div-borded{
+  border-bottom: 1px solid gray;
+}
+
+/* STORE */
+
+
+
+/* PRODUCT */
+.grid-container {
+  display: grid;
+  grid-template-columns: 1fr 1.5fr;
+}
+
+.grid-container-2{
+  display: grid;
+  grid-template-columns: 0.2fr 1.5fr 12fr 2fr;
+
+}
+
+.grid-container-3{
+  display: grid;
+  grid-template-columns: 2fr 7fr 7fr 2fr 1.5fr;
+  margin: 1px 0;
+  
+}
+
+.grid-container-4{
+  display: grid;
+  grid-template-columns: 8fr 3fr;
+}
+
+.grid-container-5{
+  display: grid;
+  grid-template-columns: 3fr 3fr 3fr;
+  gap: 25px;
+}
+.grid-container-6{
+  display: grid;
+  grid-template-columns: 1fr 5fr 2fr;
+}
+
+.grid-container-7{
+  display: grid;
+  grid-template-columns: 3fr 5fr 2fr 2fr;
+}
+
+/*CARD*/
+.card-gradient{
+  background: linear-gradient(180deg, rgba(255,255,255,1) 58%, rgba(255,174,0,1) 90%);
+  transition: all 200ms linear;
+  /* background: linear-gradient(180deg, rgba(255,255,255,1) 0%, rgba(207,207,207,1) 100%); */
+  /* background: linear-gradient(144deg, rgba(255,255,255,1) 0%, rgba(207,207,207,1) 38%, rgba(156,156,156,1) 100%); */
+  /* border: 1px white double; */
+  
+}
+
+.card-hover{
+  background-color: white;
+    transition: all 500ms linear;
+    transform: scale(1) translate(0, -12%);
+}
+
+
+/* FORM */
+.divForm{
+  display: flex;justify-content: center;
+    width: 100%;
+    align-items: center;
+    position: fixed;
+    z-index: 10;
+    align-items: center;
+    height: 100vh;
+}
+
+.blocked{
+  opacity: 0.5;
+}
+
+.yellow-borded-div{
+  border-bottom: 1px solid rgba(255,174,0,1);
+  display: flex;
+  justify-content: space-between;
+  padding:20px 0
+}
+
+.yellow-borded-div-2{
+  border-bottom: 1px solid rgba(255,174,0,1);
+  padding:15px 0
+}
+.yellow-borded-div-3{
+  border-bottom: 1px solid rgba(255,174,0,1);
+}
+
+.checkout-button{
+  width: 100%;
+  margin-top: 2rem;
+  padding: 12px;
+  border-radius: 7px;
+  color: rgba(255,174,0,1);
+  background-color: black;
+}
+
+.select-quantity-button{
+  display: flex;
+  justify-content: space-between;
+  background-color: lightgray;
+  padding: 15px 10px;
+  border-radius: 6px;
+}
+
+
+/*LOGIN*/
+
+.bg-login{
+  background: rgb(255,255,255);
+background: linear-gradient(126deg, rgb(255, 255, 255) 50%, rgb(255, 185, 33) 50%);
+}
+
+/* .bg-login-2{
+  background: rgb(255,255,255);
+background: linear-gradient(230deg, rgb(255, 255, 255) 50%, rgb(255, 185, 33) 50%);
+} */
+
+.bg-login-2{
+  background: rgb(255,255,255);
+background: linear-gradient(115deg, rgb(255, 255, 255) 50%, rgb(255, 185, 33) 50%);
+}
+
+
+/*LOGIN 2*/
+.instructions {
+  font-size: 0.75rem;
+  border-radius: 0.5rem;
+  background: #000;
+  color: #fff;
+  padding: 0.25rem;
+  position: relative;
+  bottom: -10px;
+}
+
+.instructions > svg {
+  margin-right: 0.25rem;
+}
+
+.offscreen {
+  position: absolute;
+  left: -9999px;
+}
+
+.hide {
+  display: none;
+}
+
+.valid {
+  color: limegreen;
+  margin-left: 0.25rem;
+}
+
+.invalid {
+  color: red;
+  margin-left: 0.25rem;
+}
+
+.errmsg {
+  background-color: lightpink;
+  color: firebrick;
+  font-weight: bold;
+  padding: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.line {
+  display: inline-block;
+}

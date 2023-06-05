@@ -1,0 +1,88 @@
+package com.capstone.capstone.model;
+
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
+
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
+@Entity
+@Table(name = "utenti")
+public class Utene_copia implements UserDetails{
+	
+	
+	private static final long serialVersionUID = 1L;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
+	@Column(nullable = false)
+	private String nome;
+	@Column(nullable = false)
+	private String cognome;
+	@Column(nullable = false)
+	private String username;
+	@Column(nullable = false, unique = true)
+	private String email;
+	@Column(nullable = false)
+	private String password;
+	private List<Authority> authorities = new ArrayList<>();
+	
+	public Utente(String nome, String cognome, String email, String password) {
+		super();
+		this.nome = nome;
+		this.cognome = cognome;
+		this.email = email;
+		this.password = password;
+	}
+
+	@Override
+	public Collection<? extends GrantedAuthority> getAuthorities() {
+		List<GrantedAuthority> roles = new ArrayList<>();
+		roles.add(new Authority("ROLE_UTENTE")); 
+		return roles;
+	}
+	//tutti i metodi qui sotto ci permettono di bloccare ad esempio determinati utenti
+	//dato che per la nostra applicazione non ne avremo bisogno, setteremo tutti i 
+	//return a true
+	@Override
+	public boolean isAccountNonExpired() {
+		// TODO Auto-generated method stub
+		return true;
+	}
+
+	@Override
+	public boolean isAccountNonLocked() {
+		// TODO Auto-generated method stub
+		return true;
+	}
+
+	@Override
+	public boolean isCredentialsNonExpired() {
+		// TODO Auto-generated method stub
+		return true;
+	}
+
+	@Override
+	public boolean isEnabled() {
+		// TODO Auto-generated method stub
+		return true;
+	}
+	
+	
+}
