@@ -21,6 +21,9 @@ background: linear-gradient(0deg, rgba(34,193,195,1) 0%, rgba(253,187,45,1) 27%)
 .icon-style-2{
   @apply w-6 sm:h-5 sm:w-5 text-slate-900 transition-all duration-100 active:scale-110 leading-tight /*h-6*/;
 }
+.icon-style-3{
+  @apply w-10 sm:h-5 sm:w-5 text-slate-100 cursor-pointer transition-all duration-100 active:scale-110 leading-tight /*h-6*/;
+}
 
 .logo{
   background-image: url(./assets/logo_technogym.png);
@@ -74,7 +77,7 @@ background: linear-gradient(0deg, rgba(34,193,195,1) 0%, rgba(253,187,45,1) 27%)
 }
 
 .footer-list-items{
-  @apply text-slate-100 cursor-pointer text-2xl font-bold pt-4
+  @apply text-slate-100 sm:text-xl cursor-pointer text-2xl font-bold pt-4
 }
 
 /* .google-badge{
@@ -110,7 +113,7 @@ background: linear-gradient(0deg, rgba(34,193,195,1) 0%, rgba(253,187,45,1) 27%)
 
 .grid-container-3{
   display: grid;
-  grid-template-columns: 2fr 7fr 7fr 2fr 1.5fr;
+  grid-template-columns: 3fr 7fr 4fr 2fr 1.5fr;
   margin: 1px 0;
   
 }
@@ -145,6 +148,12 @@ background: linear-gradient(0deg, rgba(34,193,195,1) 0%, rgba(253,187,45,1) 27%)
   
 }
 
+.search-card-gradient{
+  background: rgb(255,255,255);
+background: linear-gradient(180deg, rgba(255,255,255,1) 58%, rgba(0,0,0,1) 90%);
+}
+
+
 .card-hover{
   background-color: white;
     transition: all 500ms linear;
@@ -154,7 +163,8 @@ background: linear-gradient(0deg, rgba(34,193,195,1) 0%, rgba(253,187,45,1) 27%)
 
 /* FORM */
 .divForm{
-  display: flex;justify-content: center;
+  display: flex;
+  justify-content: center;
     width: 100%;
     align-items: center;
     position: fixed;
@@ -218,48 +228,64 @@ background: linear-gradient(115deg, rgb(255, 255, 255) 50%, rgb(255, 185, 33) 50
 }
 
 
-/*LOGIN 2*/
-.instructions {
-  font-size: 0.75rem;
-  border-radius: 0.5rem;
-  background: #000;
-  color: #fff;
-  padding: 0.25rem;
-  position: relative;
-  bottom: -10px;
+/*CHECKOUT*/
+
+.scrolled-box{
+  overflow: Auto;
+  height: 200px;
+  /* scrollbar-base-color: #000000;
+  scrollbar-arrow-color: #CCCCCC;
+  scrollbar-track-color: #CCCCCC; */
 }
 
-.instructions > svg {
-  margin-right: 0.25rem;
+.button-style{
+  background-color: transparent;
+  color:white;
+  transition: all 500ms linear
 }
 
-.offscreen {
-  position: absolute;
-  left: -9999px;
+.button-style:hover{
+  background-color: white;
+  color:rgb(255, 185, 33);
+  transform: scale(1); 
+  transition: all 500ms linear;
+    transition: all 500ms linear; /* vendorless fallback */
+    -o-transition: all 500ms linear; /* opera */
+    -ms-transition: all 500ms linear; /* IE 10 */
+    -moz-transition: all 500ms linear; /* Firefox */
+    -webkit-transition: all 500ms linear; /*safari and chrome */
 }
 
-.hide {
-  display: none;
+
+.options-style{
+  border-bottom: 1px solid gray;
+  padding-top: 1px;
+  padding-bottom: 1px
 }
 
-.valid {
-  color: limegreen;
-  margin-left: 0.25rem;
+.delivery-icon{
+  width: 300px;
+  height: 300px;
 }
 
-.invalid {
-  color: red;
-  margin-left: 0.25rem;
+.scrolled-options{
+  overflow: auto;
+  max-height: 81px;
 }
 
-.errmsg {
-  background-color: lightpink;
-  color: firebrick;
-  font-weight: bold;
-  padding: 0.5rem;
-  margin-bottom: 0.5rem;
+.input-search-bar{
+  width: 56rem;
+  border-radius: 10px;
+  padding: 12px;
+  padding-left: 3rem;
+  background-color: #696767d1;
+  
 }
 
-.line {
-  display: inline-block;
+.div-search-bar{
+  display: flex;
+  width: 100%;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 1.5rem;
 }

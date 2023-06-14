@@ -55,8 +55,9 @@ public class SecurityConfig {
 
     	http.cors().and().csrf().disable()
         .authorizeHttpRequests((authorize) -> authorize
-        		.requestMatchers(HttpMethod.GET, "/api/**").permitAll()
-        		//.requestMatchers(HttpMethod.GET, "/api/**").permitAll()
+        		.requestMatchers(HttpMethod.GET, "/api/**").permitAll()  //con questa riga permettiamo l'accesso
+        		//senza token a tutti gli endpoint '/api/ecc..'
+        		.requestMatchers(HttpMethod.GET, "/attrezzi/**").permitAll()
                 .requestMatchers("/api/auth/**").permitAll()
                 .anyRequest().authenticated())
         .exceptionHandling( exception -> exception

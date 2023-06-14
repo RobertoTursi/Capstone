@@ -5,7 +5,6 @@ import { useDispatch, useSelector } from "react-redux"
 const Footer = () => {
 
     const dispatch = useDispatch()
-    const prova = useSelector((state) => state.prova)
 
     const loginState = useSelector((state) => state.login)
 
@@ -13,13 +12,13 @@ const Footer = () => {
     <>
         <div className={`${loginState ? 'blocked' : ''} bg-gray-700 py-10 px-14`}>
             <div className=''>
-                <div className='grid grid-cols-4 div-borded pb-[45px]'>
-                    <div>
+                <div className='grid grid-cols-4 md:grid-cols-3 sm:grid-cols-2 div-borded pb-[45px]'>
+                    <div className="md:hidden">
                         <div>
                             <MapPinIcon onClick={() => dispatch({type:"PROVA"})} className='icon-style inline mx-2'/><span className='text-slate-100'>Italia</span>
                         </div>
                     </div>
-                    <div>
+                    <div className="sm:hidden">
                         <ul>
                             <h6 className='footer-title'>PRODOTTI</h6>
                             <li className='footer-list-items'>Tapis Roulant</li>
@@ -54,8 +53,8 @@ const Footer = () => {
                         </ul>
                     </div>
                 </div>
-                <div className='flex justify-between div-borded py-[45px]'>
-                    <div className='flex flex-col justify-between'>
+                <div className='flex justify-between flex-wrap div-borded py-[45px]'>
+                    <div className='flex flex-col justify-between mb-2'>
                         <h6 className='footer-title'>SEGUICI SU</h6>
                         <div className='flex'>
                             <img src="/src/assets/social-linkedin.png" alt="linkedin-logo/img" className='icon-style mx-3'/>
@@ -68,15 +67,15 @@ const Footer = () => {
                     <div>
                         <h6 className='footer-title'>SCARICA L'APP TECHNOGYM</h6>
                         <div className='flex'>
-                            <img src="/src/assets/google-play-badge.png" alt="badge-google/img" className='w-32 rounded-lg mt-4 mr-4'/>
-                            <img src="/src/assets/app-store-badge.png" alt="badge-apple/img" className='w-32 rounded-lg mt-4'/>
+                            <img src="/src/assets/google-play-badge.png" alt="badge-google/img" className='w-32 sm:w-20 rounded-lg mt-4 mr-4'/>
+                            <img src="/src/assets/app-store-badge.png" alt="badge-apple/img" className='w-32 sm:w-20 rounded-lg mt-4'/>
                             {/* <div className='google-badge w-30'></div>
                             <div className='apple-badge w-30 h-20'></div> */}
                         </div>
                     </div>
                 </div>
                 <div className='pt-10'>
-                    <ul className='flex'>
+                    <ul className='flex justify-between flex-wrap sm:flex-col'>
                         <li className='footer-list-item-2'>Utilizzo sicuro dei prodotti</li>
                         <li className='footer-list-item-2'>Informativa sulla privacy</li>
                         <li className='footer-list-item-2'>Politica sui cookie</li>
@@ -84,7 +83,6 @@ const Footer = () => {
                         <li className='footer-list-item-2'>Condizioni di vendita</li>
                         <li className='footer-list-item-2'>Politica di reso</li>
                         <li className='footer-list-item-2'>Impostazioni cookie</li>
-                        <li className='footer-list-item-2'>{prova}</li>
                     </ul>
                 </div>
             </div>

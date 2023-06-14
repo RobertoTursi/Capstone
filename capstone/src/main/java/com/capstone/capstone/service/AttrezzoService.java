@@ -33,7 +33,7 @@ public class AttrezzoService {
 		return (List<Attrezzo>) repo.findAll();
 	}
 	
-	public Page<Attrezzo> getAllAttrezziPageable(Pageable pageable){
+	public Page<Attrezzo> getAllPageableAttrezzi(Pageable pageable){
 		return repoPageable.findAll(pageable);
 	}
 	

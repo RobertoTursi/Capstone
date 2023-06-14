@@ -8,6 +8,7 @@ const ShowProducts = ({ ifExists }) => {
     const [tipoAttrezzoData, setTipoAttrezzoData] = useState(null)
     let token = useSelector((state) => state.token)
     let tokenStorage = sessionStorage.getItem('token')
+    let title = useSelector((state) => state.title)
     
     // const params = useParams();
     // console.log(params.tipoAttrezzo)
@@ -24,8 +25,8 @@ const ShowProducts = ({ ifExists }) => {
 
     const tipoAttrezzoProductsFetch = async () => {
         try{
-            let response = await fetch(`http://localhost:8085/attrezzi/tipoAttrezzo/${tipoAttrezzo}`,
-            { headers: { Authorization: `Bearer ${tokenStorage}`} }
+            let response = await fetch(`http://localhost:8085/attrezzi/tipoAttrezzo/${tipoAttrezzo}`
+            // ,{ headers: { Authorization: `Bearer ${tokenStorage}`} }
             )
             if(response.ok) {
                 setTipoAttrezzoData(await response.json())
@@ -37,11 +38,14 @@ const ShowProducts = ({ ifExists }) => {
     }
 
   return (
-    <div>
-        {tipoAttrezzoData?.map((attrezzo, i) => (
-            <Card {...attrezzo} key={i} ifExists={ifExists}/>
-        ))}
-    </div>
+    <>
+        <h1 className='font-bold text-6xl md:text-center mb-16 md:text-5xl sm:text-4xl text-left'>{title}</h1>
+        <div className='lg:flex lg:justify-center lg:flex-col lg:align-center'>
+            {tipoAttrezzoData?.map((attrezzo, i) => (
+                <Card {...attrezzo} key={i} ifExists={ifExists}/>
+            ))}
+        </div>
+    </>
   )
 }
 

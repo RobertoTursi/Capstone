@@ -11,9 +11,9 @@ const Carrello = () => {
     const dispatch = useDispatch()
     const utente = useSelector((state) => state.utente)
     let token = useSelector((state) => state.token)
-    let tokenStorage = sessionStorage.getItem('token')
     const utenteInfo = useSelector((state) => state.utenteInfo)
     const login = useSelector((state) => state.login)
+    const uniqueCarrello = useSelector((state) => state.uniqueCarrello)
     //const sessionStorage = window.sessionStorage
 
     const calcSubtotale = () => {
@@ -22,6 +22,10 @@ const Carrello = () => {
             subtotale += carrello[i].prezzo
         }
         console.log(subtotale)
+        dispatch({
+            type: "ADD_TOTAL",
+            payload: subtotale
+        })
         return subtotale
     }
 
@@ -29,7 +33,7 @@ const Carrello = () => {
        
         try{
           let response = await fetch(`http://localhost:8085/utenti/username/${utente.username}`,
-          { headers: { Authorization: `Bearer ${tokenStorage}`} }
+          { headers: { Authorization: `Bearer ${token}`} }
           )
           if(response.ok) {
             let res = await response.json()
@@ -37,15 +41,6 @@ const Carrello = () => {
               type: "ADD_UTENTE_INFO",
               payload:res
             })
-           
-            // sessionStorage.setItem('utenteId', res.id)
-            // sessionStorage.setItem('utenteNome', res.nome)
-            // sessionStorage.setItem('utenteUsername', res.username)
-            // sessionStorage.setItem('utenteEmail', res.email) 
-            // sessionStorage.setItem('utentePassword', res.password) 
-            // sessionStorage.setItem('utenteListaOrdini', res.lista_ordini) 
-            // sessionStorage.setItem('utenteRoles', res.roles) 
-            // console.log(res)
   
           }
         }catch(error){
@@ -53,33 +48,54 @@ const Carrello = () => {
       }
       }
 
+    //   const checkUniqueCarrello = (array) => {
+    //     for(let i=0; i<carrello.length; i++){
+    //         if(!array.includes(carrello[i])){
+    //             array.push(carrello[i])
+    //         }else{
+    //             array.push("ciao")
+    //         }
+    //     }
+    //     return array
+    //   }
+
     useEffect(() => {
         calcSubtotale()
         utenteFetch()
+        // setUniqueCarrello(carrello)
+        // setUniqueCarrello([...new Set(carrello)])
+        console.log("uniquw: ",uniqueCarrello)
     }, [])
     useEffect(() => {
         calcSubtotale()
+        // setUniqueCarrello((uniqueCarrello) => checkUniqueCarrello(uniqueCarrello))
+        // setUniqueCarrello([...new Set(carrello)])
+        console.log("uniquw: ",uniqueCarrello)
     }, [carrello])
 
     useEffect(() => {
         utenteFetch()
     }, [login])
 
+
+    
+
   return (
     <>
         <h1 className='text-5xl font-bold mb-6'>Carrello</h1>
-        <div className='grid-container-4 '>
-            <div className='mr-7'>
-                <div className='grid-container-3 bg-white py-4 rounded-t-md'>
+            <div className='grid-container-4 md:flex md:flex-col'>
+            <div className='mr-7 md:mr-0 md:mb-6'>
+                <div className='grid-container-3 bg-white p-4 rounded-t-md'>
                     <span></span>
                     <span className='text-slate-500 ml-4'>Nome del prodotto</span>
-                    <span className='text-slate-500 ml-4'>Prezzo</span>
+                    <span className='text-slate-500 ml-4 md:text-center'>Prezzo</span>
                     <span className='text-slate-500 ml-4'>Qtà</span>
                     <span></span>
                 </div>
-                <div>
-                    {carrello?.map((attrezzo, index) => (
-                        <AccessoriCard ifCarrello {...attrezzo} key={index}/>
+                <div className=''>
+                    {carrello && uniqueCarrello?.map((attrezzo, index) => (
+                        
+                        <AccessoriCard ifCarrello {...attrezzo} attrezzo key={index}/>
                     ))}
                 </div>
             </div>
@@ -113,11 +129,11 @@ const Carrello = () => {
                     </button>
                 </Link> : 
                 
-                <button onClick={() => dispatch({type: "SHOW_LOGIN", payload: true})} className='checkout-button'>
+                <button type='button' onClick={() => dispatch({type: "SHOW_LOGIN", payload: true})} className='checkout-button'>
                     PROCEDI AL CHECKOUT
                 </button>
-                
                 }
+                
 
                 
             </div>

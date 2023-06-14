@@ -3,11 +3,14 @@ package com.capstone.capstone.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.capstone.capstone.model.Ordine;
+import com.capstone.capstone.model.Utente;
 import com.capstone.capstone.repository.OrdineDaoRepository;
-
+import com.capstone.capstone.repository.OrdinePageableRepository;
 
 import jakarta.persistence.EntityExistsException;
 
@@ -15,6 +18,7 @@ import jakarta.persistence.EntityExistsException;
 public class OrdineService {
 	
 	@Autowired OrdineDaoRepository repo;
+	@Autowired OrdinePageableRepository repoPageable;
 	
 	public Ordine createOrdine(Ordine o) {
 		repo.save(o);
@@ -47,6 +51,10 @@ public class OrdineService {
 			throw new EntityExistsException("L'ordine che stai cercando, con id: " + id + " non esiste");
 		}
 		return repo.findById(id).get();
+	}
+	
+	public Page<Ordine> getAllPageableOrdini(Pageable pageable){
+		return repoPageable.findAll(pageable);
 	}
 }
 

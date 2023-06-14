@@ -29,8 +29,8 @@ const Product = () => {
 
     const idProductsFetch = async () => {
         try{
-            let response = await fetch(`http://localhost:8085/attrezzi/id/${id}`,
-            { headers: { Authorization: `Bearer ${tokenStorage}`} }
+            let response = await fetch(`http://localhost:8085/attrezzi/id/${id}`
+            //,{ headers: { Authorization: `Bearer ${tokenStorage}`} }
             )
             if(response.ok) {
                 let res = await response.json()
@@ -48,8 +48,8 @@ const Product = () => {
 
     const accessoriFetch = async () => {
         try{
-            let response = await fetch(`http://localhost:8085/attrezzi/tipoAttrezzo/ACCESSORI`,
-            { headers: { Authorization: `Bearer ${tokenStorage}`} }
+            let response = await fetch(`http://localhost:8085/attrezzi/tipoAttrezzo/ACCESSORI`
+            //,{ headers: { Authorization: `Bearer ${tokenStorage}`} }
             )
             if(response.ok) {
                 let res = await response.json()
@@ -72,6 +72,11 @@ const Product = () => {
                 type: "SEND_TO_CART",
                 payload: idAttrezzoData
             }) 
+            dispatch({
+                type: "ADD_TO_UNIQUE_CARRELLO",
+                payload: idAttrezzoData
+                
+            })
         }
         // if(carrello.find(obj => obj.id === id)){
         //     setIsChecked(true)
@@ -83,14 +88,14 @@ const Product = () => {
 
   return (
         <>
-             <div className='grid-container p-10'>
+             <div className='grid-container p-10 md:p-0 md:pb-7 sm:flex flex-col'>
              {idAttrezzoData && <div className="flex flex-col items-center rounded-md">
-                        <img className="w-5/6" src={attrezzoImg} alt="" />
+                        <img className="w-5/6 md:h-3/5 md:mb-6" src={attrezzoImg} alt="" />
                     </div>}
                     {idAttrezzoData && <div>
-                        <h1 className="text-4xl font-semibold">{idAttrezzoData.nome}</h1>
-                        <h3 className="mt-2 text-slate-600 font-semibold text-lg">{idAttrezzoData.sottotitolo}</h3>
-                        <p className="text-sm text-slate-600 my-6">{idAttrezzoData.descrizione} {idAttrezzoData.descrizione2}</p>
+                        <h1 className="text-4xl font-semibold md:text-2xl">{idAttrezzoData.nome}</h1>
+                        <h3 className="mt-2 text-slate-600 font-semibold text-lg md:text-base">{idAttrezzoData.sottotitolo}</h3>
+                        <p className="text-sm text-slate-600 my-6 md:hidden">{idAttrezzoData.descrizione} {idAttrezzoData.descrizione2}</p>
                         <div className="flex items-center">
                             <PlusIcon className="icon-style-2 " onClick={() => {setPlusTriggered(!plusTriggered)}}/>
                             <h2 className="ml-2 font-semibold text-lg">Scegli Accessori</h2>
@@ -104,8 +109,8 @@ const Product = () => {
                         }
                     </div>}
                 </div>
-                <div className="bg-white sticky bottom-0 flex justify-around p-2">
-                    <p className="text-slate-900">{cart}€</p>
+                <div className=" sticky bottom-0 flex justify-around p-2 items-center mx-10 md:mx-0">
+                    {/* <span className="text-2xl text-slate-900 md:text-lg ">{cart}€</span> */}
                    
                         {/* <button type="button" 
                         onClick={sendToCart}
@@ -115,7 +120,7 @@ const Product = () => {
                     <Link to={"/carrello"}>
                         <button type="button" 
                         onClick={sendToCart}
-                            className="text-slate-100 bg-black p-4 rounded-md font-bold hover:bg-slate-700 transition-all duration-800 "
+                            className="text-slate-100 bg-black p-4 rounded-md font-bold hover:bg-slate-700 transition-all duration-800 md:text-xs md:p-2"
                         >AGGIUNGI AL CARRELLO</button>
                     </Link>
                 </div>
